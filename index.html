@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta http‑equiv="X‑UA‑Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="AlpazTech – Expert web development: e‑commerce, SME and enterprise web solutions.">
-<meta name="keywords" content="AlpazTech, web development, e‑commerce websites, enterprise web, custom web apps">
+<meta name="description" content="Automate your future with AlpazTech – responsive, feature‑rich web and app solutions that simplify, accelerate and scale your business.">
+<meta name="keywords" content="AlpazTech, web development, automation, AI integration, e‑commerce, custom web apps">
 <meta property="og:title" content="AlpazTech | Web Development Startup">
-<meta property="og:description" content="Building scalable, secure, high‑performance websites – from SMEs to enterprise.">
+<meta property="og:description" content="Responsive, feature‑rich custom websites and apps that work for you.">
 <meta property="og:image" content="https://yourdomain.com/og-image.jpg">
 <meta property="og:url" content="https://yourdomain.com">
 <meta name="twitter:card" content="summary_large_image">
@@ -42,11 +42,22 @@ nav{height:100%;display:flex;align-items:center;justify-content:space-between}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.18)}
 @keyframes gradientShift{0%{background-position:0 50%}100%{background-position:200% 50%}}
 section{scroll-margin-top:calc(var(--header-height)+24px)}
-#services,#about,#testimonials,#contact{padding:4.5rem 0}
-#services{background:#fff}
-.services-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.service-card{background:#fff;padding:2.2rem;border-radius:10px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s}
-.service-card:hover{transform:translateY(-8px);box-shadow:0 8px 18px rgba(0,0,0,.08)}
+#core,#portfolio,#objective,#testimonials,#contact{padding:4.5rem 0}
+#core{background:#fff}
+.core-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));perspective:1000px}
+.flip-card{background:transparent;width:100%;height:240px}
+.flip-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform .6s;transform-style:preserve-3d;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.flip-card:hover .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem}
+.flip-front{background:#fff}
+.flip-back{background:var(--primary);color:#fff;transform:rotateY(180deg)}
+.flip-front svg{width:40px;height:40px;fill:var(--accent);margin-bottom:1rem}
+#portfolio{background:#f0f4f8}
+.portfolio-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.case-card{background:#fff;padding:2rem;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s}
+.case-card:hover{transform:translateY(-8px);box-shadow:0 8px 18px rgba(0,0,0,.08)}
+.case-card a{color:var(--accent);font-weight:500}
+#objective p{max-width:800px;margin:0 auto;font-size:1.08rem;line-height:1.65;text-align:center}
 .testimonial-carousel{position:relative;overflow:hidden}
 .testimonial-slides{display:flex;transition:transform .5s ease-in-out}
 .testimonial-slide{flex:0 0 100%;background:#fff;padding:2rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.05);text-align:center}
@@ -54,7 +65,7 @@ section{scroll-margin-top:calc(var(--header-height)+24px)}
 .testimonial-slide h4{color:var(--primary);margin:0}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--accent);border:none;border-radius:4px;color:#fff;padding:.55rem 1rem;cursor:pointer;opacity:.85;transition:opacity .25s;z-index:10}
 .carousel-btn:hover{opacity:1}.prev-btn{left:8px}.next-btn{right:8px}
-#contact{background:#f0f4f8}
+#contact{background:#fff}
 .contact-wrapper{display:grid;grid-template-columns:1fr 2fr;gap:3rem}
 .contact-details{display:flex;flex-direction:column;gap:1.5rem}
 .contact-card{display:flex;align-items:center;gap:1rem;background:#fff;padding:1.6rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .3s}
@@ -79,7 +90,8 @@ footer{background:var(--footer-bg);color:#fff;text-align:center;padding:2.2rem 0
 .nav-links.open{right:0}
 .overlay{display:block}
 .hero{flex-direction:column;text-align:center;padding:4rem 1.5rem}
-.services-grid{grid-template-columns:1fr}
+.core-grid{grid-template-columns:1fr}
+.portfolio-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
 :root{--header-height:70px}
@@ -100,8 +112,9 @@ header{height:var(--header-height)}
 <nav aria-label="Primary">
 <a href="#home"><img src="logo.png" class="logo" alt="AlpazTech logo"></a>
 <ul class="nav-links" id="navLinks">
-<li><a href="#services">Services</a></li>
-<li><a href="#about">About</a></li>
+<li><a href="#core">Solutions</a></li>
+<li><a href="#portfolio">Portfolio</a></li>
+<li><a href="#objective">Objective</a></li>
 <li><a href="#testimonials">Testimonials</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
@@ -109,32 +122,89 @@ header{height:var(--header-height)}
 </nav>
 </div>
 </header>
+
 <section class="hero" id="home" data-aos="fade">
 <div class="hero-content" data-aos="zoom-in">
-<h1>Build Your Digital Future with AlpazTech</h1>
-<p>We craft responsive, feature‑rich web solutions tailored for businesses of every size.</p>
-<a class="btn-primary" href="mailto:info@alpaztech.com?subject=Quote%20Request">Get a Quote</a>
+<h1>Automate Your Future</h1>
+<p>We provide responsive, feature‑rich customised web &amp; app solutions.</p>
+<a class="btn-primary" href="quotation.html">Get a Quote</a>
 </div>
 </section>
-<section id="services">
+
+<section id="core">
 <div class="container" data-aos="fade-up">
-<h2 style="text-align:center;margin-bottom:2rem;font-size:2.1rem">Our Services</h2>
-<div class="services-grid">
-<div class="service-card" data-aos="zoom-in" data-aos-delay="100"><h3>Custom Web Apps</h3><p>Tailored, scalable solutions.</p></div>
-<div class="service-card" data-aos="zoom-in" data-aos-delay="200"><h3>E‑Commerce</h3><p>Secure, high‑converting stores.</p></div>
-<div class="service-card" data-aos="zoom-in" data-aos-delay="300"><h3>Small Business Sites</h3><p>Affordable, professional presence.</p></div>
-<div class="service-card" data-aos="zoom-in" data-aos-delay="400"><h3>Enterprise Web</h3><p>High‑availability, large‑scale builds.</p></div>
-<div class="service-card" data-aos="zoom-in" data-aos-delay="500"><h3>Maintenance & Support</h3><p>Updates, security, hosting.</p></div>
-<div class="service-card" data-aos="zoom-in" data-aos-delay="600"><h3>UI/UX Design</h3><p>User‑centred interfaces.</p></div>
+<h2 style="text-align:center;margin-bottom:2rem;font-size:2.1rem">Core Solutions</h2>
+<div class="core-grid">
+<div class="flip-card" data-aos="zoom-in" data-aos-delay="100">
+<div class="flip-inner">
+<div class="flip-front">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm1 15h-2v-2h2zm2.07-7.75l-.9.92A1.5 1.5 0 0013 12h-2v-.5a1 1 0 01.29-.71l1.2-1.2a2 2 0 10-2.83-2.83l-.9.9"/></svg>
+<h3>AI Integration</h3>
+</div>
+<div class="flip-back"><p>Chatbots, recommendation engines, smart forms and AI dashboards that elevate user experience.</p></div>
+</div>
+</div>
+<div class="flip-card" data-aos="zoom-in" data-aos-delay="200">
+<div class="flip-inner">
+<div class="flip-front">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"/></svg>
+<h3>Payment Gateway Integration</h3>
+</div>
+<div class="flip-back"><p>Seamless Stripe, PayPal, PayHere and LankaPay integrations with secure OTP checkout flows.</p></div>
+</div>
+</div>
+<div class="flip-card" data-aos="zoom-in" data-aos-delay="300">
+<div class="flip-inner">
+<div class="flip-front">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v4h2V5h14v14h-4v2h4a2 2 0 002-2V5a2 2 0 00-2-2z"/><path d="M15 13H3a2 2 0 00-2 2v6h2v-6h12v6h2v-6a2 2 0 00-2-2z"/></svg>
+<h3>Business Process Automation</h3>
+</div>
+<div class="flip-back"><p>Booking systems, inventory, auto‑invoices, follow‑up messaging and dynamic form routing.</p></div>
+</div>
+</div>
+<div class="flip-card" data-aos="zoom-in" data-aos-delay="400">
+<div class="flip-inner">
+<div class="flip-front">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 5v14a2 2 0 002 2h14v-2H5V5H3zm18-2H9a2 2 0 00-2 2v11a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2zm0 13H9V5h12z"/></svg>
+<h3>Web Portal Features</h3>
+</div>
+<div class="flip-back"><p>Role‑based portals with uploads, approvals, real‑time tracking and multi‑channel notifications.</p></div>
+</div>
+</div>
 </div>
 </div>
 </section>
-<section id="about">
+
+<section id="portfolio">
 <div class="container" data-aos="fade-up">
-<h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">About Us</h2>
-<p style="text-align:center">At AlpazTech we blend creativity and engineering excellence to craft digital experiences that deliver measurable results.</p>
+<h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">Case Studies</h2>
+<div class="portfolio-grid">
+<div class="case-card" data-aos="zoom-in" data-aos-delay="100">
+<h4>Ticket Booking System</h4>
+<p>Automated seat selection and real‑time bookings that cut manual handling by 80 %.</p>
+<a href="#">View Project</a>
+</div>
+<div class="case-card" data-aos="zoom-in" data-aos-delay="200">
+<h4>AI Chatbots</h4>
+<p>24 / 7 support bots that resolved 60 % of queries without human intervention.</p>
+<a href="#">View Project</a>
+</div>
+<div class="case-card" data-aos="zoom-in" data-aos-delay="300">
+<h4>Auto‑Generated Invoices</h4>
+<p>End‑to‑end invoicing automation with instant PDF and e‑mail delivery.</p>
+<a href="#">View Project</a>
+</div>
+</div>
 </div>
 </section>
+
+<section id="objective">
+<div class="container" data-aos="fade-up">
+<h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">What is AlpazTech</h2>
+<p>We help businesses build custom websites and apps that actually work for them, saving time and reducing manual work. Our solutions automate daily operations with smart coding and AI tools. Whether you're launching a startup or scaling an enterprise, we make your digital systems simpler, faster and smarter.</p>
+</div>
+</section>
+
 <section id="testimonials">
 <div class="container" data-aos="fade-up">
 <h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">Testimonials</h2>
@@ -148,9 +218,10 @@ header{height:var(--header-height)}
 </div>
 </div>
 </section>
+
 <section id="contact">
 <div class="container" data-aos="fade-up">
-<h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">Get in Touch</h2>
+<h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">Contact Us</h2>
 <div class="contact-wrapper">
 <div class="contact-details">
 <div class="contact-card" data-aos="fade-right" data-aos-delay="100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-.91 1 19.8 19.8 0 01-17.14-17.14A1 1 0 014 3.5h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.27 1.11l-2.18 2.18z"/></svg><a href="tel:+94768879830">+94 768 879830</a></div>
@@ -168,11 +239,13 @@ header{height:var(--header-height)}
 </div>
 </div>
 </section>
+
 <button id="backToTop" aria-label="Back to top">&#9650;</button>
 <footer>
 <div class="footer-contact"><a href="tel:+94768879830">+94 768 879830</a> | <a href="mailto:info@alpaztech.com">info@alpaztech.com</a></div>
 <p>&copy; 2025 AlpazTech. All rights reserved.</p>
 </footer>
+
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
 AOS.init({once:true,duration:800,easing:'ease-out-cubic'});
