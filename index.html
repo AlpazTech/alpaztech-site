@@ -15,34 +15,60 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 <style>
+/* ---------- RESET & TOKENS ---------- */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--primary:#1e3a8a;--accent:#f59e0b;--text:#333;--bg:#f9fafb;--font:'Helvetica Neue',Arial,sans-serif;--header-height:90px;--footer-bg:#111}
-body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+:root{
+ --primary:#1e3a8a;--accent:#f59e0b;--text:#333;--bg:#f9fafb;
+ --font:'Helvetica Neue',Arial,sans-serif;--header-height:90px;--footer-bg:#111
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);
+      overflow-x:hidden;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;height:auto}
-header{position:fixed;top:0;left:0;right:0;height:var(--header-height);background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 2px 4px rgba(0,0,0,.08);z-index:1000;animation:slideDown .8s ease-out}
+
+/* ---------- HEADER ---------- */
+header{position:fixed;top:0;left:0;right:0;height:var(--header-height);
+       background:rgba(255,255,255,.95);backdrop-filter:blur(10px);
+       box-shadow:0 2px 4px rgba(0,0,0,.08);z-index:1000;animation:slideDown .8s ease-out}
 .container{width:min(92%,1200px);margin:0 auto;height:100%}
 nav{height:100%;display:flex;align-items:center;justify-content:space-between}
 .logo{height:58px;width:auto}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{position:relative;padding:.5rem;font-weight:500;transition:color .25s}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--accent);transition:width .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;
+                    background:var(--accent);transition:width .25s}
 .nav-links a:hover,.nav-links a.active{color:var(--accent)}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%}
 .menu-toggle{display:none;font-size:2rem;background:none;border:none;color:var(--primary);cursor:pointer}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .3s}
 .overlay.show{opacity:1;pointer-events:auto}
 @keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
-.hero{margin-top:var(--header-height);min-height:calc(100vh - var(--header-height));background:url('cover.jpeg') center/cover no-repeat fixed;display:flex;align-items:center;justify-content:center;padding:0 2rem;position:relative}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.6),rgba(0,0,0,.3));z-index:1}
+
+/* ---------- HERO ---------- */
+.hero{margin-top:var(--header-height);min-height:calc(100vh - var(--header-height));
+      background:url('cover.jpeg') center/cover no-repeat fixed;
+      display:flex;align-items:center;justify-content:center;padding:0 2rem;position:relative}
+.hero::after{content:"";position:absolute;inset:0;
+             background:linear-gradient(135deg,rgba(0,0,0,.6),rgba(0,0,0,.3));z-index:1}
 .hero-content{position:relative;z-index:2;text-align:center;color:#fff;max-width:720px}
-.hero-content h1{font-size:clamp(2.2rem,6vw,3.8rem);margin-bottom:1rem;background:linear-gradient(90deg,var(--accent),#fff,var(--accent));background-size:200%;-webkit-background-clip:text;color:transparent;animation:gradientShift 6s linear infinite}
-.hero-content p{margin-bottom:2rem;font-size:clamp(1rem,2.5vw,1.25rem);line-height:1.6;opacity:.92}
-.btn-primary{display:inline-block;background:var(--accent);color:#fff;padding:.85rem 2.1rem;border:none;border-radius:6px;font-size:1rem;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.12);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.hero-content h1{font-size:clamp(2.2rem,6vw,3.8rem);margin-bottom:1rem;
+                 background:linear-gradient(90deg,var(--accent),#fff,var(--accent));
+                 background-size:200%;-webkit-background-clip:text;color:transparent;
+                 animation:gradientShift 6s linear infinite}
+.hero-content p{margin-bottom:2rem;font-size:clamp(1rem,2.5vw,1.25rem);
+                line-height:1.6;opacity:.92}
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;
+             padding:.85rem 2.1rem;border:none;border-radius:6px;font-size:1rem;
+             cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.12);
+             transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.18)}
 @keyframes gradientShift{0%{background-position:0 50%}100%{background-position:200% 50%}}
+
+/* ---------- SECTIONS ---------- */
 section{scroll-margin-top:calc(var(--header-height)+24px)}
 #core,#portfolio,#objective,#testimonials,#contact{padding:4.5rem 0}
+
+/* ---------- CORE SOLUTIONS ---------- */
 #core{background:#fff}
 .core-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));perspective:1000px}
 .flip-card{background:transparent;width:100%;height:240px}
@@ -52,12 +78,18 @@ section{scroll-margin-top:calc(var(--header-height)+24px)}
 .flip-front{background:#fff}
 .flip-back{background:var(--primary);color:#fff;transform:rotateY(180deg)}
 .flip-front svg{width:40px;height:40px;fill:var(--accent);margin-bottom:1rem}
+
+/* ---------- PORTFOLIO ---------- */
 #portfolio{background:#f0f4f8}
 .portfolio-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .case-card{background:#fff;padding:2rem;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s}
 .case-card:hover{transform:translateY(-8px);box-shadow:0 8px 18px rgba(0,0,0,.08)}
 .case-card a{color:var(--accent);font-weight:500}
+
+/* ---------- OBJECTIVE ---------- */
 #objective p{max-width:800px;margin:0 auto;font-size:1.08rem;line-height:1.65;text-align:center}
+
+/* ---------- TESTIMONIALS ---------- */
 .testimonial-carousel{position:relative;overflow:hidden}
 .testimonial-slides{display:flex;transition:transform .5s ease-in-out}
 .testimonial-slide{flex:0 0 100%;background:#fff;padding:2rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.05);text-align:center}
@@ -65,6 +97,8 @@ section{scroll-margin-top:calc(var(--header-height)+24px)}
 .testimonial-slide h4{color:var(--primary);margin:0}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--accent);border:none;border-radius:4px;color:#fff;padding:.55rem 1rem;cursor:pointer;opacity:.85;transition:opacity .25s;z-index:10}
 .carousel-btn:hover{opacity:1}.prev-btn{left:8px}.next-btn{right:8px}
+
+/* ---------- CONTACT / QUOTE ---------- */
 #contact{background:#fff}
 .contact-wrapper{display:grid;grid-template-columns:1fr 2fr;gap:3rem}
 .contact-details{display:flex;flex-direction:column;gap:1.5rem}
@@ -76,32 +110,46 @@ section{scroll-margin-top:calc(var(--header-height)+24px)}
 .contact-form-container{background:#fff;padding:2rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .3s}
 .contact-form-container:hover{transform:translateY(-5px)}
 .contact-form-container h3{margin-bottom:1rem;color:var(--primary)}
-.contact-form-container form input,.contact-form-container form textarea{width:100%;padding:.8rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:4px;font-size:.95rem;transition:border-color .25s}
-.contact-form-container form input:focus,.contact-form-container form textarea:focus{border-color:var(--primary);outline:none}
+.contact-form-container form input,
+.contact-form-container form select,
+.contact-form-container form textarea{width:100%;padding:.8rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:4px;font-size:.95rem;transition:border-color .25s}
+.contact-form-container form input:focus,
+.contact-form-container form select:focus,
+.contact-form-container form textarea:focus{border-color:var(--primary);outline:none}
+.contact-form-container button{width:100%}
+.thank-you{display:none;text-align:center;font-size:1.05rem;color:var(--primary);margin-top:1rem}
+
+/* ---------- FOOTER ---------- */
 footer{background:var(--footer-bg);color:#fff;text-align:center;padding:2.2rem 0;font-size:.95rem}
 .footer-contact a{color:#fff;opacity:.9;transition:opacity .25s}
 .footer-contact a:hover{opacity:1}
+
+/* ---------- BACK TO TOP ---------- */
 #backToTop{position:fixed;right:22px;bottom:22px;background:var(--primary);color:#fff;border:none;border-radius:50%;padding:.8rem;cursor:pointer;display:none;box-shadow:0 2px 6px rgba(0,0,0,.22);transition:opacity .3s}
 #backToTop.show{display:block;opacity:1}
+
+/* ---------- RESPONSIVE ---------- */
 @media(max-width:992px){.contact-wrapper{grid-template-columns:1fr}}
 @media(max-width:768px){
-.menu-toggle{display:block}
-.nav-links{position:fixed;top:0;right:-100%;height:100vh;width:75%;max-width:300px;flex-direction:column;align-items:center;justify-content:center;background:#fff;gap:2rem;transition:right .35s ease;box-shadow:-2px 0 8px rgba(0,0,0,.08)}
-.nav-links.open{right:0}
-.overlay{display:block}
-.hero{flex-direction:column;text-align:center;padding:4rem 1.5rem}
-.core-grid{grid-template-columns:1fr}
-.portfolio-grid{grid-template-columns:1fr}
+ .menu-toggle{display:block}
+ .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:75%;max-width:300px;
+            flex-direction:column;align-items:center;justify-content:center;background:#fff;
+            gap:2rem;transition:right .35s ease;box-shadow:-2px 0 8px rgba(0,0,0,.08)}
+ .nav-links.open{right:0}
+ .overlay{display:block}
+ .hero{flex-direction:column;text-align:center;padding:4rem 1.5rem}
+ .core-grid{grid-template-columns:1fr}
+ .portfolio-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
-:root{--header-height:70px}
-header{height:var(--header-height)}
-.logo{height:48px}
-.hero-content h1{font-size:2rem}
-.hero-content p{font-size:.95rem}
-.btn-primary{padding:.7rem 1.6rem;font-size:.9rem}
-.testimonial-slide{padding:1.4rem}
-.contact-card{padding:1.2rem}
+ :root{--header-height:70px}
+ header{height:var(--header-height)}
+ .logo{height:48px}
+ .hero-content h1{font-size:2rem}
+ .hero-content p{font-size:.95rem}
+ .btn-primary{padding:.7rem 1.6rem;font-size:.9rem}
+ .testimonial-slide{padding:1.4rem}
+ .contact-card{padding:1.2rem}
 }
 </style>
 </head>
@@ -123,18 +171,21 @@ header{height:var(--header-height)}
 </div>
 </header>
 
+<!-- ---------- HERO ---------- -->
 <section class="hero" id="home" data-aos="fade">
 <div class="hero-content" data-aos="zoom-in">
 <h1>Automate Your Future</h1>
 <p>We provide responsive, feature‑rich customised web &amp; app solutions.</p>
-<a class="btn-primary" href="quotation.html">Get a Quote</a>
+<a class="btn-primary" href="#contact">Get a Quote</a>
 </div>
 </section>
 
+<!-- ---------- CORE SOLUTIONS ---------- -->
 <section id="core">
 <div class="container" data-aos="fade-up">
 <h2 style="text-align:center;margin-bottom:2rem;font-size:2.1rem">Core Solutions</h2>
 <div class="core-grid">
+<!-- AI -->
 <div class="flip-card" data-aos="zoom-in" data-aos-delay="100">
 <div class="flip-inner">
 <div class="flip-front">
@@ -144,6 +195,7 @@ header{height:var(--header-height)}
 <div class="flip-back"><p>Chatbots, recommendation engines, smart forms and AI dashboards that elevate user experience.</p></div>
 </div>
 </div>
+<!-- Payment -->
 <div class="flip-card" data-aos="zoom-in" data-aos-delay="200">
 <div class="flip-inner">
 <div class="flip-front">
@@ -153,15 +205,17 @@ header{height:var(--header-height)}
 <div class="flip-back"><p>Seamless Stripe, PayPal, PayHere and LankaPay integrations with secure OTP checkout flows.</p></div>
 </div>
 </div>
+<!-- BPA -->
 <div class="flip-card" data-aos="zoom-in" data-aos-delay="300">
 <div class="flip-inner">
 <div class="flip-front">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v4h2V5h14v14h-4v2h4a2 2 0 002-2V5a2 2 0 00-2-2z"/><path d="M15 13H3a2 2 0 00-2 2v6h2v-6h12v6h2v-6a2 2 0 00-2-2z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v4h2V5h14v14h-4v2h4a2 2 0 002-2V5a2 2 0 00-2-2zm0 13H9V5h12z"/><path d="M15 13H3a2 2 0 00-2 2v6h2v-6h12v6h2v-6a2 2 0 00-2-2z"/></svg>
 <h3>Business Process Automation</h3>
 </div>
 <div class="flip-back"><p>Booking systems, inventory, auto‑invoices, follow‑up messaging and dynamic form routing.</p></div>
 </div>
 </div>
+<!-- Portal -->
 <div class="flip-card" data-aos="zoom-in" data-aos-delay="400">
 <div class="flip-inner">
 <div class="flip-front">
@@ -175,6 +229,7 @@ header{height:var(--header-height)}
 </div>
 </section>
 
+<!-- ---------- PORTFOLIO ---------- -->
 <section id="portfolio">
 <div class="container" data-aos="fade-up">
 <h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">Case Studies</h2>
@@ -198,6 +253,7 @@ header{height:var(--header-height)}
 </div>
 </section>
 
+<!-- ---------- OBJECTIVE ---------- -->
 <section id="objective">
 <div class="container" data-aos="fade-up">
 <h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">What is AlpazTech</h2>
@@ -205,6 +261,7 @@ header{height:var(--header-height)}
 </div>
 </section>
 
+<!-- ---------- TESTIMONIALS ---------- -->
 <section id="testimonials">
 <div class="container" data-aos="fade-up">
 <h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">Testimonials</h2>
@@ -219,21 +276,46 @@ header{height:var(--header-height)}
 </div>
 </section>
 
+<!-- ---------- CONTACT / QUOTATION ---------- -->
 <section id="contact">
 <div class="container" data-aos="fade-up">
-<h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">Contact Us</h2>
+<h2 style="text-align:center;margin-bottom:2rem;font-size:2.05rem">Contact / Get a Quote</h2>
 <div class="contact-wrapper">
+<!-- quick details -->
 <div class="contact-details">
-<div class="contact-card" data-aos="fade-right" data-aos-delay="100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-.91 1 19.8 19.8 0 01-17.14-17.14A1 1 0 014 3.5h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.27 1.11l-2.18 2.18z"/></svg><a href="tel:+94768879830">+94 768 879830</a></div>
-<div class="contact-card" data-aos="fade-right" data-aos-delay="200"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 11 4 6.01V6h16zM4 18V8l8 5 8-5v10H4z"/></svg><a href="mailto:info@alpaztech.com">info@alpaztech.com</a></div>
+<div class="contact-card" data-aos="fade-right" data-aos-delay="100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-.91 1 19.8 19.8 0 01-17.14-17.14A1 1 0 014 3.5h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.27 1.11l-2.18 2.18z"/>
+</svg>
+<a href="tel:+94768879830">+94 768 879830</a>
 </div>
+<div class="contact-card" data-aos="fade-right" data-aos-delay="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 11 4 6.01V6h16zM4 18V8l8 5 8-5v10H4z"/>
+</svg>
+<a href="mailto:info@alpaztech.com">info@alpaztech.com</a>
+</div>
+</div>
+<!-- form -->
 <div class="contact-form-container" data-aos="fade-left" data-aos-delay="300">
-<h3>Send Us a Message</h3>
-<form id="contactForm">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-<button type="submit" class="btn-primary">Send Message</button>
+<h3>Tell us about your project</h3>
+<form id="quoteForm">
+<input type="text" name="fname" placeholder="First Name" required>
+<input type="text" name="lname" placeholder="Last Name" required>
+<input type="email" name="email" placeholder="Email Address" required>
+<input type="tel" name="phone" placeholder="Phone Number" required>
+<input type="text" name="industry" placeholder="Industry">
+<input type="text" name="solution" placeholder="Solution Needed (e.g. e‑commerce site, mobile app)" required>
+<select name="tech" required>
+<option value="" disabled selected>Do you know the technology stack?</option>
+<option value="Yes">Yes – I know the stack</option>
+<option value="No">No – need guidance</option>
+</select>
+<input type="text" name="budget" placeholder="Budget Estimate">
+<input type="text" name="timeline" placeholder="Expected Timeline">
+<textarea name="message" rows="5" placeholder="Additional Details"></textarea>
+<button type="submit" class="btn-primary">Submit</button>
+<p class="thank-you" id="thanksMsg">Thank you for reaching out! Our team will review your details and get back to you shortly with the best possible solution tailored to your needs.</p>
 </form>
 </div>
 </div>
@@ -246,22 +328,102 @@ header{height:var(--header-height)}
 <p>&copy; 2025 AlpazTech. All rights reserved.</p>
 </footer>
 
+<!-- ---------- SCRIPTS ---------- -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 <script>
+/* ----- AOS ----- */
 AOS.init({once:true,duration:800,easing:'ease-out-cubic'});
-const menuToggle=document.getElementById('menuToggle');const navLinks=document.getElementById('navLinks');const overlay=document.getElementById('navOverlay');
-function toggleNav(){navLinks.classList.toggle('open');overlay.classList.toggle('show');menuToggle.setAttribute('aria-label',navLinks.classList.contains('open')?'Close navigation':'Open navigation')}
-menuToggle.addEventListener('click',toggleNav);overlay.addEventListener('click',toggleNav);navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{if(navLinks.classList.contains('open'))toggleNav()}));
-const backBtn=document.getElementById('backToTop');const navAs=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{backBtn.classList.toggle('show',window.pageYOffset>350);navAs.forEach(a=>{const sec=document.querySelector(a.getAttribute('href'));if(!sec)return;const rect=sec.getBoundingClientRect();a.classList.toggle('active',rect.top<=100&&rect.bottom>100)})});
+
+/* ----- MOBILE NAV ----- */
+const menuToggle=document.getElementById('menuToggle');
+const navLinks=document.getElementById('navLinks');
+const overlay=document.getElementById('navOverlay');
+function toggleNav(){
+ navLinks.classList.toggle('open');
+ overlay.classList.toggle('show');
+ menuToggle.setAttribute('aria-label',
+  navLinks.classList.contains('open')?'Close navigation':'Open navigation');
+}
+menuToggle.addEventListener('click',toggleNav);
+overlay.addEventListener('click',toggleNav);
+navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{if(navLinks.classList.contains('open'))toggleNav()}));
+
+/* ----- SCROLL SPY & BACK TOP ----- */
+const backBtn=document.getElementById('backToTop');
+const navAs=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+ backBtn.classList.toggle('show',window.pageYOffset>350);
+ navAs.forEach(a=>{
+  const sec=document.querySelector(a.getAttribute('href'));
+  if(!sec)return;
+  const rect=sec.getBoundingClientRect();
+  a.classList.toggle('active',rect.top<=100&&rect.bottom>100);
+ });
+});
 backBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-document.querySelectorAll('.btn-primary').forEach(btn=>{btn.addEventListener('mousedown',function(e){const circle=document.createElement('span');const d=Math.max(this.clientWidth,this.clientHeight);circle.style.width=circle.style.height=`${d}px`;circle.style.left=`${e.clientX-this.getBoundingClientRect().left-d/2}px`;circle.style.top=`${e.clientY-this.getBoundingClientRect().top-d/2}px`;circle.classList.add('ripple');this.appendChild(circle);setTimeout(()=>circle.remove(),600)})});
-const slidesContainer=document.getElementById('testimonialSlides');const slides=document.querySelectorAll('.testimonial-slide');let slideIdx=0;
+
+/* ----- BUTTON RIPPLES ----- */
+document.querySelectorAll('.btn-primary').forEach(btn=>{
+ btn.addEventListener('mousedown',function(e){
+  const circle=document.createElement('span');
+  const d=Math.max(this.clientWidth,this.clientHeight);
+  circle.style.width=circle.style.height=`${d}px`;
+  circle.style.left=`${e.clientX-this.getBoundingClientRect().left-d/2}px`;
+  circle.style.top=`${e.clientY-this.getBoundingClientRect().top-d/2}px`;
+  circle.classList.add('ripple');
+  this.appendChild(circle);
+  setTimeout(()=>circle.remove(),600);
+ });
+});
+
+/* ----- TESTIMONIAL CAROUSEL ----- */
+const slidesContainer=document.getElementById('testimonialSlides');
+const slides=document.querySelectorAll('.testimonial-slide');
+let slideIdx=0;
 function updateSlide(){slidesContainer.style.transform=`translateX(-${slideIdx*100}%)`}
 document.querySelector('.next-btn').onclick=()=>{slideIdx=(slideIdx+1)%slides.length;updateSlide()};
 document.querySelector('.prev-btn').onclick=()=>{slideIdx=(slideIdx-1+slides.length)%slides.length;updateSlide()};
 setInterval(()=>{slideIdx=(slideIdx+1)%slides.length;updateSlide()},8000);
-document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const f=e.target;const subject=encodeURIComponent('Website enquiry from '+f.name.value);const body=encodeURIComponent(`Name: ${f.name.value}\nEmail: ${f.email.value}\n\n${f.message.value}`);window.location.href=`mailto:info@alpaztech.com?subject=${subject}&body=${body}`});
+
+/* ----- QUOTE FORM ----- */
+document.getElementById('quoteForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const f=e.target;
+ /* build email body */
+ const body=`First Name: ${f.fname.value}
+Last Name: ${f.lname.value}
+Email: ${f.email.value}
+Phone: ${f.phone.value}
+Industry: ${f.industry.value}
+Solution Needed: ${f.solution.value}
+Know Technology: ${f.tech.value}
+Budget: ${f.budget.value}
+Timeline: ${f.timeline.value}
+
+Message:
+${f.message.value}`;
+ /* send via SMTPJS */
+ Email.send({
+  Host:"smtp.gmail.com",
+  Username:"projecthelaedu@gmail.com",
+  Password:"acvg jeui seav dvmf",
+  To:"info@alpaztech.com",
+  From:"projecthelaedu@gmail.com",
+  Subject:`Quote Request from ${f.fname.value} ${f.lname.value}`,
+  Body:body.replace(/\n/g,'<br>')
+ }).then(()=>{/* hide form show thanks */
+  f.reset();
+  f.querySelector('button').style.display='none';
+  document.getElementById('thanksMsg').style.display='block';
+ }).catch(()=>alert('Sorry, something went wrong. Please try again later.'));
+});
+
+/* ----- ripple style ----- */
+const style=document.createElement('style');
+style.textContent=`.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.4);transform:scale(0);animation:rip 0.6s linear}
+@keyframes rip{to{transform:scale(4);opacity:0}}`;
+document.head.appendChild(style);
 </script>
 </body>
 </html>
