@@ -314,3 +314,39 @@ span.main-heading {
       width: 100%;
    }
 }
+
+/* Reveal-on-scroll base state  */
+.reveal {
+   opacity: 0;
+   transform: translateY(40px) scale(.94);   /* lower, slightly smaller */
+   will-change: opacity, transform;          /* GPU-accelerated */
+ }
+ 
+ /* …when IntersectionObserver adds .active */
+ .reveal.active {
+   opacity: 1;
+   transform: translateY(0) scale(1);
+   /* smooth, spring-like feel */
+   transition:
+     opacity   .8s cubic-bezier(.25,.46,.45,.94),
+     transform .8s cubic-bezier(.25,.46,.45,.94);
+ }
+ 
+ /* Respect users who prefer reduced motion */
+ @media (prefers-reduced-motion: reduce) {
+   .reveal,
+   .reveal.active {
+     transition: none;
+     transform: none;
+     opacity: 1;
+   }
+ }
+
+ header.fixed-top {
+   top: 10px;      /* push the whole header down by 10px */
+ }
+ 
+ header.fixed-top nav {
+   border: 1px solid rgba(86, 89, 97, 0.6);
+   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
+ }

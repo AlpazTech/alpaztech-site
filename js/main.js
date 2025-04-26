@@ -99,3 +99,21 @@ window.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => loader.remove(), 100);
    }, 1000);
 });
+
+// reveal-on-scroll with IntersectionObserver
+const observer = new IntersectionObserver((entries, obs) => {
+   entries.forEach(entry => {
+     if (entry.isIntersecting) {
+       entry.target.classList.add('active');
+       obs.unobserve(entry.target);             // animate only once
+     }
+   });
+ }, {
+   threshold: 0.1    // element is 10% visible before triggering
+ });
+ 
+ document.querySelectorAll('.reveal').forEach(el => {
+   const d = el.dataset.delay;
+   if (d) el.style.transitionDelay = `${d}ms`;
+   observer.observe(el);
+ });
